@@ -23,8 +23,8 @@ KulliyyahQuiz is a web-based assessment platform designed for IIUM students and 
 - To design and implement a clear database structure utilizing the specified tables with well-defined Eloquent relationships for efficient data storage and retrieval.
 
 ## Target Users
-- Students 
-- Teachers
+- Students: Users who can view available quizzes, attempt quizzes, and track their performance history
+- Teachers: Users who create, manage quizzes and monitor class performance
 - Administrators: System managers who oversee the platform
 
 ## Features & Functionalities  
@@ -65,38 +65,38 @@ KulliyyahQuiz is a web-based assessment platform designed for IIUM students and 
 Database Schema Overview: Our database consists of 7 main tables designed to handle users, subjects, quizzes, questions, attempts, and related data.
 
 Core Tables:
-• 	Users – Accounts for students, teachers, and admins with role-based access.
-• 	Subjects – Information about kulliyyah subjects linked to quizzes.
-• 	Quizzes – Quiz metadata (title, description, schedule, timer, attempt limits).
-• 	Questions – Individual quiz questions (MCQ, True/False).
-• 	Options – Possible answer choices for each question.
-• 	Attempts – Records of student quiz attempts (linked to users and quizzes).
-• 	Answers – Student-submitted answers for each attempt. 
+- Users – Accounts for students, teachers, and admins with role-based access.
+- Subjects – Information about kulliyyah subjects linked to quizzes.
+- Quizzes – Quiz metadata (title, description, schedule, timer, attempt limits).
+- Questions – Individual quiz questions (MCQ, True/False).
+- Options – Possible answer choices for each question.
+- Attempts – Records of student quiz attempts (linked to users and quizzes).
+- Answers – Student-submitted answers for each attempt. 
 
 ### Entity Relationship Diagram (ERD)
 
 [View ERD Document](https://docs.google.com/document/d/1M6yclEerBu4T9z1hcOYAC3hyxTxXBisTfYfN3EObr-4/edit?usp=sharing)
 
 Key Relationships:
-• 	Users → Quizzes (One-to-Many)
-            One teacher can create many quizzes and each quiz belongs to one teacher.
+- Users → Quizzes (One-to-Many)
+  One teacher can create many quizzes and each quiz belongs to one teacher.
 
-• 	Subjects → Quizzes (One-to-Many)
+- Subjects → Quizzes (One-to-Many)
 One subject can have multiple quizzes and each quiz is tied to a single subject.
 
-• 	Quizzes → Questions (One-to-Many)
+- Quizzes → Questions (One-to-Many)
 A quiz contains multiple questions and each question belongs to one quiz.
 
-• 	Questions → Options (One-to-Many)
+- Questions → Options (One-to-Many)
 A question can have multiple answer options and each option belongs to one question.
 
-• 	Users ↔ Attempts ↔ Quizzes (Many-to-Many via Attempts)
+- Users ↔ Attempts ↔ Quizzes (Many-to-Many via Attempts)
 A student can attempt a quiz multiple times and a quiz can be attempted by many students.
 
-• 	Attempts → Answers (One-to-Many)
+- Attempts → Answers (One-to-Many)
 One attempt generates multiple answers and each answer belongs to one attempt.
 
-• 	Questions → Answers (One-to-Many)
+- Questions → Answers (One-to-Many)
 A question can have many submitted answers and ach answer is tied to one question.
 
 **Laravel Components Implementation**
@@ -143,9 +143,41 @@ A question can have many submitted answers and ach answer is tied to one questio
 
 ### Step-by-Step Installation
 
-1. 
-2. 
-3. 
+1. Clone the Repository
+
+```bash
+git clone https://github.com/[your-username]/KulliyyahQuiz.git/n
+cd KulliyyahQuiz
+```
+
+2. Install Dependencies
+
+```bash
+composer install
+npm install
+```
+
+3. Environment Configuration
+
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+4. Database Setup
+
+```bash
+# Configure database in .env file
+php artisan migrate
+php artisan db:seed
+```
+
+5. Start Development Server
+
+```bash
+php artisan serve
+npm run dev 
+```
 
 ## Testing and Quality Assurance 
 
@@ -193,8 +225,9 @@ A question can have many submitted answers and ach answer is tied to one questio
 ## Future Enhancements
 ### Phase 2 Features (Potential Improvements)
 - **Real-time Notifications**: Push notifications for order updates
-- **Advanced Analytics** : 
-- **Mobile App** : Native mobile application for iOS and Android
+- **Advanced Analytics**: Detailed teacher reports using data visualization for specific question difficulty levels
+- **Mobile App**: Native mobile application for iOS and Android
+- **Monitoring Integration**: AI-based monitoring to ensure academic integrity during remote attempts
 
 ### Scalability Considerations
 
