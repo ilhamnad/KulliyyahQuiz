@@ -101,23 +101,91 @@ A question can have many submitted answers and each answer is tied to one questi
 
 **Laravel Components Implementation**
 
-- Routes 
+- Routes (Web.php)
+
+// Authentication Routes
+Auth::routes();
+
+// Public Routes
+Route::get('/', [QuizController::class, 'index'])->name('quiz.index');
+Route::get('/quiz/{id}', [QuizController::class, 'show'])->name('quiz.show');
+
+// Protected Routes (Student & Admin)
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+    Route::resource('quizzes', QuizController::class);
+    Route::resource('questions', QuestionController::class);
+    Route::resource('options', OptionController::class);
+});
   
 - Controllers
+
+- *Main Controllers Implemented are below:*
+1. QuizController: Handles quiz creation, display, and management
+2. QUestionController: Manages quiz questions and associations
+3. OptionController: Controls multiple-choice options per question
+4. UserController: Manages user roles and dashboard access
+5. Controller: Base Laravel controller extended by others
   
 - Models & Relationships
+// User Model
+class User extends Authenticatable {
+    public function quizzes() {
+        return $this->hasMany(Quiz::class);
+    }
+}
+
+// Quiz Model
+class Quiz extends Model {
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+    public function questions() {
+        return $this->hasMany(Question::class);
+    }
+}
+
+// Question Model
+class Question extends Model {
+    public function quiz() {
+        return $this->belongsTo(Quiz::class);
+    }
+    public function options() {
+        return $this->hasMany(Option::class);
+    }
+}
+
+// Option Model
+class Option extends Model {
+    public function question() {
+        return $this->belongsTo(Question::class);
+    }
+}
   
-- Views
-- User Interface
+- Views and User Interface
   
   *Blade Templates Structure:*
-  - file names
+- layouts/app.blade.php – Main layouts
+- quiz/index.blade.php – Quiz listing
+- quiz/show.blade.php – Individual quiz view
+- auth/login.blade.php – Login page
+- dashboard.blade.php – Role-based dashboard
 
+*HTML Templates:*
+- login.html, register.html, register-v2.html – Authentication pages
+- forms/general.html – General form layout
+- generate/index.html, index2.html – Quiz generation interfaces
+  
   *Design Features:*
-  - Responsive Design: 
-  - Color Scheme: 
-  - Navigation: 
-  - Interactive Elements: 
+  - Responsive Design: Bootstrap 5 for mobile-first approach 
+  - Color Scheme: AdminLTE default with RTL support and customizable themes
+  - Navigation: Sidebar and top menu with role-based visibility (Admin, Student)
+  - Interactive Elements:
+    - Dynamic quiz forms with validation
+    - Role-based dashboard cards
+    - Modal popups for quiz instructions
+    - AdminLTE components: cards, alerts, progress bars, dropdowns
+    - Enhanced UI via adminlte.min.css and RTL variants
 
 ## User Authentication System 
 ### **Authentication Features**
