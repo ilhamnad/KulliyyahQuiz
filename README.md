@@ -249,7 +249,6 @@ npm run dev
 - Quiz Attempt – Timed quizzes, randomized questions, auto-submit.
 - Grading & Results – Instant scoring, result history, performance analytics.
 - Teacher Management – Create, edit, publish quizzes; view class reports.
-- Admin Control – Manage users, subjects, and system data.
 - Responsive Design – Works smoothly across desktop, tablet, and mobile.
 
 ### Browser Compatibility
@@ -272,7 +271,7 @@ npm run dev
 - Solution: Implemented clear ERD with proper one-to-many and many-to-many relationships using pivot tables.
 
 ### Challenge 2: Role-based Authentication
-- Problem: Different access levels required for students, teachers, and admins.
+- Problem: Different access levels required for students and teachers.
 - Solution: Applied middleware to check user roles and redirect to appropriate dashboards.
   
 ### Challenge 3: Timed Quiz & Auto-Submission
