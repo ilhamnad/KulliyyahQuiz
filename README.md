@@ -97,7 +97,7 @@ A student can attempt a quiz multiple times and a quiz can be attempted by many 
 One attempt generates multiple answers and each answer belongs to one attempt.
 
 - Questions → Answers (One-to-Many)
-A question can have many submitted answers and ach answer is tied to one question.
+A question can have many submitted answers and each answer is tied to one question.
 
 **Laravel Components Implementation**
 
