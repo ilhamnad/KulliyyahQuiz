@@ -25,7 +25,6 @@ KulliyyahQuiz is a web-based assessment platform designed for IIUM students and 
 ## Target Users
 - Students: Users who can view available quizzes, attempt quizzes, and track their performance history
 - Teachers: Users who create, manage quizzes and monitor class performance
-- Administrators: System managers who oversee the platform
 
 ## Features & Functionalities  
 
@@ -43,12 +42,6 @@ KulliyyahQuiz is a web-based assessment platform designed for IIUM students and 
 - Publishing Quizzes: Assign quizzes to specific subjects and student groups.
 - Automated Grading: System checks answers instantly and calculates scores.
 - Performance Dashboard: View analytics such as average scores, attempts, and class performance trends.
-
-**Admin Features**
-- User Management: Add, edit, and delete student/teacher accounts securely.
-- Subject Management: Organize subjects and ensure proper categorization for quizzes.
-- System Data Management: Maintain consistency of records and enforce access rights.
-- Monitoring & Control: Oversee overall system activity and ensure smooth operations.
 
 ## Technical Implementation  
 **Technology Stack**
